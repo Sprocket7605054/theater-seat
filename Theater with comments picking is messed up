@@ -1,0 +1,50 @@
+
+# setting up the 2d array and the pricing.
+rows, cols = (9, 9)
+arr = [[0 for i in range(cols)] for j in range(rows)]
+#Maximum seat price/starting price
+c = 15
+#Making the seat prices.
+for x in range(cols): 
+  for j in range(rows):
+     arr[x][j] = c
+#Decrease price for each row
+  c = c + 10 
+def seatpicking():
+    #RN = row number
+    RN = 9
+    for row in arr:
+            print("Row Number:",RN,row)
+            RN = RN - 1
+    print("Pick a row that you want to purchase a seat in.")
+    #RP = Row Pick
+    RP = int(input())
+    print("Now pick a colloum that you want to purchase a seat in.")
+    #CP = Collumn pick
+    CP = int(input())
+    RP = RP + 0
+    CP = CP + 0
+    if (arr[RP][CP] != 'X'):
+        print("The seat is now yours.")
+        arr[RP][CP] = 'X'
+        RN = 9
+        for row in arr:
+            print("Row Number:",RN,row)
+            RN = RN - 1
+    else:
+        print("The seat has been taken, pick another.")
+        seatpicking()
+
+
+def moon():
+   PC = 0
+   while (PC == 0 ):
+    print("Do you want to buy a seat for the concert?")
+    Operator = input()
+    if Operator.lower() in [ "yes"]:
+            seatpicking()
+    elif Operator.lower() in [ "no"]:
+            print("Then bye!!!!.")
+            exit()
+
+moon()
